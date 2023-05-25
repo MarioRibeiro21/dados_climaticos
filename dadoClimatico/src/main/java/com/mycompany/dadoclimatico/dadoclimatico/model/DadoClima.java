@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Mario
+ * @author Mario e Álvaro
  */
 public class DadoClima {
     

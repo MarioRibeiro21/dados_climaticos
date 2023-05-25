@@ -11,10 +11,10 @@ import java.util.List;
 
 /**
  *
- * @author Mario
+ * @author Mario e Álvaro
  */
 public class EstacaoClimatica {
-    private List<IPainel> paineis;
+    private static List<IPainel> paineis;
 
    public EstacaoClimatica() {
        paineis = new ArrayList<>();

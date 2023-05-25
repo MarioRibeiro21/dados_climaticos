@@ -4,17 +4,25 @@
  */
 package com.mycompany.dadoclimatico.dadoclimatico.view;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
- * @author Álvaro Moret
+ * @author Mario e Álvaro
  */
 public class ClimaFrame extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form ClimaFrame
      */
     public ClimaFrame() {
         initComponents();
+        this.setVisible(true);
+        this.frmConfiguracao.setVisible(false);
     }
 
     /**
@@ -27,7 +35,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel8 = new javax.swing.JLabel();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
+        frmDadosInclude = new javax.swing.JInternalFrame();
         lblData = new javax.swing.JLabel();
         lblTemperatura = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -37,7 +45,7 @@ public class ClimaFrame extends javax.swing.JFrame {
         txtInclude_Umidade = new javax.swing.JTextField();
         txtInclude_Pressão = new javax.swing.JTextField();
         btnIncluir = new javax.swing.JButton();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
+        frmDadosMedios = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -46,7 +54,7 @@ public class ClimaFrame extends javax.swing.JFrame {
         lblMedia_Umidade = new javax.swing.JLabel();
         lblMedia_Pressao = new javax.swing.JLabel();
         lblMedia_nrRegistros = new javax.swing.JLabel();
-        jInternalFrame3 = new javax.swing.JInternalFrame();
+        frmUltimaAtt = new javax.swing.JInternalFrame();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -55,11 +63,11 @@ public class ClimaFrame extends javax.swing.JFrame {
         lblUltimo_Umidade = new javax.swing.JLabel();
         lblUltimo_Pressao = new javax.swing.JLabel();
         lblUltimo_Data = new javax.swing.JLabel();
-        jInternalFrame4 = new javax.swing.JInternalFrame();
+        frmRegistros = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistros = new javax.swing.JTable();
         btnRemove = new javax.swing.JButton();
-        jInternalFrame5 = new javax.swing.JInternalFrame();
+        frmGrafico = new javax.swing.JInternalFrame();
         lblNumeroRegistros_Painel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         frmConfiguracao = new javax.swing.JInternalFrame();
@@ -73,10 +81,10 @@ public class ClimaFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jInternalFrame1.setResizable(true);
-        jInternalFrame1.setTitle("Dados do Tempo");
-        jInternalFrame1.setPreferredSize(new java.awt.Dimension(300, 180));
-        jInternalFrame1.setVisible(true);
+        frmDadosInclude.setResizable(true);
+        frmDadosInclude.setTitle("Dados do Tempo");
+        frmDadosInclude.setPreferredSize(new java.awt.Dimension(300, 180));
+        frmDadosInclude.setVisible(true);
 
         lblData.setText("Data:");
 
@@ -94,54 +102,65 @@ public class ClimaFrame extends javax.swing.JFrame {
             }
         });
 
+        txtInclude_Umidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInclude_UmidadeActionPerformed(evt);
+            }
+        });
+
         btnIncluir.setText("Incluir");
+        btnIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIncluirMouseClicked(evt);
+            }
+        });
         btnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIncluirActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        javax.swing.GroupLayout frmDadosIncludeLayout = new javax.swing.GroupLayout(frmDadosInclude.getContentPane());
+        frmDadosInclude.getContentPane().setLayout(frmDadosIncludeLayout);
+        frmDadosIncludeLayout.setHorizontalGroup(
+            frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDadosIncludeLayout.createSequentialGroup()
+                .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(frmDadosIncludeLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblData)
                             .addComponent(lblTemperatura)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtInclude_Data)
                             .addComponent(txtInclude_Temperatura)
                             .addComponent(txtInclude_Umidade)
                             .addComponent(txtInclude_Pressão, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                    .addGroup(frmDadosIncludeLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnIncluir)))
                 .addGap(18, 18, 18))
         );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+        frmDadosIncludeLayout.setVerticalGroup(
+            frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmDadosIncludeLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblData)
                     .addComponent(txtInclude_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTemperatura)
                     .addComponent(txtInclude_Temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtInclude_Umidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosIncludeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtInclude_Pressão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -149,9 +168,9 @@ public class ClimaFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jInternalFrame2.setTitle("Dados Médios");
-        jInternalFrame2.setPreferredSize(new java.awt.Dimension(300, 190));
-        jInternalFrame2.setVisible(true);
+        frmDadosMedios.setTitle("Dados Médios");
+        frmDadosMedios.setPreferredSize(new java.awt.Dimension(300, 190));
+        frmDadosMedios.setVisible(true);
 
         jLabel1.setText("Temperatura Média:");
 
@@ -181,51 +200,51 @@ public class ClimaFrame extends javax.swing.JFrame {
         lblMedia_nrRegistros.setText("jLabel11");
         lblMedia_nrRegistros.setToolTipText("");
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
+        javax.swing.GroupLayout frmDadosMediosLayout = new javax.swing.GroupLayout(frmDadosMedios.getContentPane());
+        frmDadosMedios.getContentPane().setLayout(frmDadosMediosLayout);
+        frmDadosMediosLayout.setHorizontalGroup(
+            frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmDadosMediosLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblMedia_Temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblMedia_Umidade, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblMedia_Pressao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMedia_nrRegistros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
+        frmDadosMediosLayout.setVerticalGroup(
+            frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmDadosMediosLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblMedia_Temperatura))
                 .addGap(16, 16, 16)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblMedia_Umidade))
                 .addGap(16, 16, 16)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(lblMedia_Pressao))
                 .addGap(16, 16, 16)
-                .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmDadosMediosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblMedia_nrRegistros))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jInternalFrame3.setResizable(true);
-        jInternalFrame3.setTitle("Última Atualização do Tempo");
-        jInternalFrame3.setVisible(true);
+        frmUltimaAtt.setResizable(true);
+        frmUltimaAtt.setTitle("Última Atualização do Tempo");
+        frmUltimaAtt.setVisible(true);
 
         jLabel7.setText("Temperatura:");
 
@@ -250,56 +269,57 @@ public class ClimaFrame extends javax.swing.JFrame {
         lblUltimo_Data.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUltimo_Data.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUltimo_Data.setText("jLabel15");
+        lblUltimo_Data.setMaximumSize(new java.awt.Dimension(140, 16));
 
-        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
-        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
-        jInternalFrame3Layout.setHorizontalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame3Layout.createSequentialGroup()
+        javax.swing.GroupLayout frmUltimaAttLayout = new javax.swing.GroupLayout(frmUltimaAtt.getContentPane());
+        frmUltimaAtt.getContentPane().setLayout(frmUltimaAttLayout);
+        frmUltimaAttLayout.setHorizontalGroup(
+            frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmUltimaAttLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame3Layout.createSequentialGroup()
+                .addGroup(frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(frmUltimaAttLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblUltimo_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
+                        .addComponent(lblUltimo_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmUltimaAttLayout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblUltimo_Pressao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmUltimaAttLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblUltimo_Umidade, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmUltimaAttLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                         .addComponent(lblUltimo_Temperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
         );
-        jInternalFrame3Layout.setVerticalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame3Layout.createSequentialGroup()
+        frmUltimaAttLayout.setVerticalGroup(
+            frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmUltimaAttLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(lblUltimo_Temperatura))
                 .addGap(17, 17, 17)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(lblUltimo_Umidade))
                 .addGap(17, 17, 17)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lblUltimo_Pressao))
                 .addGap(17, 17, 17)
-                .addGroup(jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(frmUltimaAttLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(lblUltimo_Data))
+                    .addComponent(lblUltimo_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jInternalFrame4.setTitle("Registros");
-        jInternalFrame4.setVisible(true);
+        frmRegistros.setTitle("Registros");
+        frmRegistros.setVisible(true);
 
         tblRegistros.setAutoCreateRowSorter(true);
         tblRegistros.setModel(new javax.swing.table.DefaultTableModel(
@@ -343,22 +363,22 @@ public class ClimaFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jInternalFrame4Layout = new javax.swing.GroupLayout(jInternalFrame4.getContentPane());
-        jInternalFrame4.getContentPane().setLayout(jInternalFrame4Layout);
-        jInternalFrame4Layout.setHorizontalGroup(
-            jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame4Layout.createSequentialGroup()
+        javax.swing.GroupLayout frmRegistrosLayout = new javax.swing.GroupLayout(frmRegistros.getContentPane());
+        frmRegistros.getContentPane().setLayout(frmRegistrosLayout);
+        frmRegistrosLayout.setHorizontalGroup(
+            frmRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmRegistrosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frmRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame4Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frmRegistrosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnRemove)))
                 .addContainerGap())
         );
-        jInternalFrame4Layout.setVerticalGroup(
-            jInternalFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame4Layout.createSequentialGroup()
+        frmRegistrosLayout.setVerticalGroup(
+            frmRegistrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(frmRegistrosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -366,17 +386,17 @@ public class ClimaFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jInternalFrame5.setTitle("Máximas e Mínimas");
-        jInternalFrame5.setVisible(true);
+        frmGrafico.setTitle("Máximas e Mínimas");
+        frmGrafico.setVisible(true);
 
-        javax.swing.GroupLayout jInternalFrame5Layout = new javax.swing.GroupLayout(jInternalFrame5.getContentPane());
-        jInternalFrame5.getContentPane().setLayout(jInternalFrame5Layout);
-        jInternalFrame5Layout.setHorizontalGroup(
-            jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout frmGraficoLayout = new javax.swing.GroupLayout(frmGrafico.getContentPane());
+        frmGrafico.getContentPane().setLayout(frmGraficoLayout);
+        frmGraficoLayout.setHorizontalGroup(
+            frmGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jInternalFrame5Layout.setVerticalGroup(
-            jInternalFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        frmGraficoLayout.setVerticalGroup(
+            frmGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -421,7 +441,7 @@ public class ClimaFrame extends javax.swing.JFrame {
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         frmConfiguracaoLayout.setVerticalGroup(
             frmConfiguracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,9 +478,9 @@ public class ClimaFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(frmDadosInclude, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jInternalFrame5))
+                                .addComponent(frmGrafico))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(frmConfiguracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -468,10 +488,10 @@ public class ClimaFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jInternalFrame2, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
-                                    .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(frmDadosMedios, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                                    .addComponent(frmUltimaAtt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jInternalFrame4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(frmRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -480,23 +500,23 @@ public class ClimaFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jInternalFrame4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(frmRegistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap(9, Short.MAX_VALUE)
-                                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(frmUltimaAtt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
                                 .addComponent(frmConfiguracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(frmDadosMedios, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addComponent(jInternalFrame5))
+                    .addComponent(frmDadosInclude, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(frmGrafico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblNumeroRegistros_Painel)
                 .addContainerGap())
@@ -522,9 +542,163 @@ public class ClimaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        frmConfiguracao.setVisible(false);
+        if(frmConfiguracao.isVisible())
+            frmConfiguracao.setVisible(false);
+        else
+            frmConfiguracao.setVisible(true);
     }//GEN-LAST:event_jMenu1MouseClicked
 
+    private void btnIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIncluirMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIncluirMouseClicked
+
+    private void txtInclude_UmidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInclude_UmidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtInclude_UmidadeActionPerformed
+
+    
+    public JButton getBtnIncluir(){
+        return this.btnIncluir;
+    }
+
+    public JButton getBtnRemove() {
+        return btnRemove;
+    }
+
+    public void setBtnRemove(JButton btnRemove) {
+        this.btnRemove = btnRemove;
+    }
+
+    public JLabel getLblData() {
+        return lblData;
+    }
+
+    public void setLblData(JLabel lblData) {
+        this.lblData = lblData;
+    }
+
+    public JLabel getLblMedia_Pressao() {
+        return lblMedia_Pressao;
+    }
+
+    public void setLblMedia_Pressao(JLabel lblMedia_Pressao) {
+        this.lblMedia_Pressao = lblMedia_Pressao;
+    }
+
+    public JLabel getLblMedia_Temperatura() {
+        return lblMedia_Temperatura;
+    }
+
+    public void setLblMedia_Temperatura(JLabel lblMedia_Temperatura) {
+        this.lblMedia_Temperatura = lblMedia_Temperatura;
+    }
+
+    public JLabel getLblMedia_Umidade() {
+        return lblMedia_Umidade;
+    }
+
+    public void setLblMedia_Umidade(JLabel lblMedia_Umidade) {
+        this.lblMedia_Umidade = lblMedia_Umidade;
+    }
+
+    public JLabel getLblMedia_nrRegistros() {
+        return lblMedia_nrRegistros;
+    }
+
+    public void setLblMedia_nrRegistros(JLabel lblMedia_nrRegistros) {
+        this.lblMedia_nrRegistros = lblMedia_nrRegistros;
+    }
+
+    public JLabel getLblNumeroRegistros_Painel() {
+        return lblNumeroRegistros_Painel;
+    }
+
+    public void setLblNumeroRegistros_Painel(JLabel lblNumeroRegistros_Painel) {
+        this.lblNumeroRegistros_Painel = lblNumeroRegistros_Painel;
+    }
+
+    public JLabel getLblTemperatura() {
+        return lblTemperatura;
+    }
+
+    public void setLblTemperatura(JLabel lblTemperatura) {
+        this.lblTemperatura = lblTemperatura;
+    }
+
+    public JLabel getLblUltimo_Data() {
+        return lblUltimo_Data;
+    }
+
+    public void setLblUltimo_Data(JLabel lblUltimo_Data) {
+        this.lblUltimo_Data = lblUltimo_Data;
+    }
+
+    public JLabel getLblUltimo_Pressao() {
+        return lblUltimo_Pressao;
+    }
+
+    public void setLblUltimo_Pressao(JLabel lblUltimo_Pressao) {
+        this.lblUltimo_Pressao = lblUltimo_Pressao;
+    }
+
+    public JLabel getLblUltimo_Temperatura() {
+        return lblUltimo_Temperatura;
+    }
+
+    public void setLblUltimo_Temperatura(JLabel lblUltimo_Temperatura) {
+        this.lblUltimo_Temperatura = lblUltimo_Temperatura;
+    }
+
+    public JLabel getLblUltimo_Umidade() {
+        return lblUltimo_Umidade;
+    }
+
+    public void setLblUltimo_Umidade(JLabel lblUltimo_Umidade) {
+        this.lblUltimo_Umidade = lblUltimo_Umidade;
+    }
+
+    public JTable getTblRegistros() {
+        return tblRegistros;
+    }
+
+    public void setTblRegistros(JTable tblRegistros) {
+        this.tblRegistros = tblRegistros;
+    }
+
+    public JTextField getTxtInclude_Data() {
+        return txtInclude_Data;
+    }
+
+    public void setTxtInclude_Data(JTextField txtInclude_Data) {
+        this.txtInclude_Data = txtInclude_Data;
+    }
+
+    public JTextField getTxtInclude_Pressao() {
+        return txtInclude_Pressão;
+    }
+
+    public void setTxtInclude_Pressao(JTextField txtInclude_Pressão) {
+        this.txtInclude_Pressão = txtInclude_Pressão;
+    }
+
+    public JTextField getTxtInclude_Temperatura() {
+        return txtInclude_Temperatura;
+    }
+
+    public void setTxtInclude_Temperatura(JTextField txtInclude_Temperatura) {
+        this.txtInclude_Temperatura = txtInclude_Temperatura;
+    }
+
+    public JTextField getTxtInclude_Umidade() {
+        return txtInclude_Umidade;
+    }
+
+    public void setTxtInclude_Umidade(JTextField txtInclude_Umidade) {
+        this.txtInclude_Umidade = txtInclude_Umidade;
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -564,13 +738,13 @@ public class ClimaFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnRemove;
     private javax.swing.JInternalFrame frmConfiguracao;
+    private javax.swing.JInternalFrame frmDadosInclude;
+    private javax.swing.JInternalFrame frmDadosMedios;
+    private javax.swing.JInternalFrame frmGrafico;
+    private javax.swing.JInternalFrame frmRegistros;
+    private javax.swing.JInternalFrame frmUltimaAtt;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JInternalFrame jInternalFrame3;
-    private javax.swing.JInternalFrame jInternalFrame4;
-    private javax.swing.JInternalFrame jInternalFrame5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
