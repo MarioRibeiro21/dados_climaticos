@@ -12,32 +12,33 @@ import java.util.List;
  *
  * @author Mario
  */
-public class MaximasMinimasObserver implements IPainel{
+public class MaximasMinimasObserver implements IPainel {
+
     private List<DadoClima> dadosClima;
     private float maxima;
     private float minima;
-    
+
     public MaximasMinimasObserver() {
-       dadosClima = new ArrayList<>();
-   }
-    
+        dadosClima = new ArrayList<>();
+    }
+
     @Override
     public void atualizar(DadoClima dadoClima) {
         dadosClima.add(dadoClima);
         calcularMaximasMinimas();
     }
-    
-     private void calcularMaximasMinimas() {
-         
-         for (DadoClima dado : dadosClima){
-             if(dado.getTemperatura()>maxima){
-                this.maxima= dado.getTemperatura();
-             }
-            if(dado.getTemperatura()<minima){
-                this.minima= dado.getTemperatura();
-             }
+
+    private void calcularMaximasMinimas() {
+
+        for (DadoClima dado : dadosClima) {
+            if (dado.getTemperatura() > maxima) {
+                this.maxima = dado.getTemperatura();
+            }
+            if (dado.getTemperatura() < minima) {
+                this.minima = dado.getTemperatura();
+            }
         }
-     }
+    }
 
     public float getMaxima() {
         return maxima;
@@ -55,5 +56,4 @@ public class MaximasMinimasObserver implements IPainel{
         this.minima = minima;
     }
 
-    
 }

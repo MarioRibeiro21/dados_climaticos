@@ -14,31 +14,32 @@ import java.util.List;
  * @author Mario e Álvaro
  */
 public class EstacaoClimatica {
+
     private static List<IPainel> paineis;
 
-   public EstacaoClimatica() {
-       paineis = new ArrayList<>();
-       paineis.add(new EstatisticaClimaObserver());
-       paineis.add(new MaximasMinimasObserver());
-   }
+    public EstacaoClimatica() {
+        paineis = new ArrayList<>();
+        paineis.add(new EstatisticaClimaObserver());
+        paineis.add(new MaximasMinimasObserver());
+    }
 
-   public void registrarPainel(IPainel painel) {
-       paineis.add(painel);
-   }
+    public void registrarPainel(IPainel painel) {
+        paineis.add(painel);
+    }
 
-   public void removerPainel(IPainel painel) {
-       paineis.remove(painel);
-   }
+    public void removerPainel(IPainel painel) {
+        paineis.remove(painel);
+    }
 
-   public void atualizarMedicoes(float temperatura, float umidade, float pressao, LocalDate data) {
-       DadoClima dadoClima = new DadoClima(temperatura, umidade, pressao, data);
-       notificarPaineis(dadoClima);
-   }
+    public void atualizarMedicoes(Float temperatura, Float umidade, Float pressao, LocalDate data) {
+        var dado = new DadoClima(temperatura, umidade, pressao, data);
+        notificarPaineis(dado);
+    }
 
-   private void notificarPaineis(DadoClima dadoClima) {
-       for (IPainel painel : paineis) {
-           painel.atualizar(dadoClima);
-       }
-   }
+    private void notificarPaineis(DadoClima dadoClima) {
+        for (IPainel painel : paineis) {
+            painel.atualizar(dadoClima);
+        }
+    }
 
 }

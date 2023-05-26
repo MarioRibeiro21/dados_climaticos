@@ -24,6 +24,10 @@ public class DadoClima {
        this.data = data;
    }
 
+    public DadoClima() {
+    }
+   
+
     public float getTemperatura() {
         return temperatura;
     }

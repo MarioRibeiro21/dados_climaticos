@@ -4,6 +4,8 @@
  */
 package com.mycompany.dadoclimatico.dadoclimatico.view;
 
+import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
+import com.mycompany.dadoclimatico.dadoclimatico.utils.DataUtil;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -15,7 +17,8 @@ import javax.swing.JTextField;
  */
 public class ClimaFrame extends javax.swing.JFrame {
 
-    
+    private DadoClima dado = new DadoClima();
+
     /**
      * Creates new form ClimaFrame
      */
@@ -666,6 +669,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     }
 
     public JTextField getTxtInclude_Data() {
+        dado.setData( DataUtil.stringToData(txtInclude_Data.getText()));
         return txtInclude_Data;
     }
 
@@ -674,6 +678,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     }
 
     public JTextField getTxtInclude_Pressao() {
+        dado.setPressao(Float.parseFloat(txtInclude_Pressão.getText()));
         return txtInclude_Pressão;
     }
 
@@ -682,6 +687,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     }
 
     public JTextField getTxtInclude_Temperatura() {
+        dado.setTemperatura(Float.parseFloat(txtInclude_Temperatura.getText()));
         return txtInclude_Temperatura;
     }
 
@@ -690,6 +696,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     }
 
     public JTextField getTxtInclude_Umidade() {
+        dado.setUmidade(Float.parseFloat(txtInclude_Umidade.getText()));
         return txtInclude_Umidade;
     }
 
@@ -697,7 +704,9 @@ public class ClimaFrame extends javax.swing.JFrame {
         this.txtInclude_Umidade = txtInclude_Umidade;
     }
     
-    
+    public DadoClima getDado(){
+        return dado;
+    }
     
     /**
      * @param args the command line arguments
