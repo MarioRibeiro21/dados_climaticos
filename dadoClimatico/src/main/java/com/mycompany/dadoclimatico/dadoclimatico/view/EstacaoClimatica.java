@@ -4,6 +4,9 @@
  */
 package com.mycompany.dadoclimatico.dadoclimatico.view;
 
+import com.mycompany.dadoclimatico.dadoclimatico.model.MaximasMinimasObserver;
+import com.mycompany.dadoclimatico.dadoclimatico.model.EstatisticaClimaObserver;
+import com.mycompany.dadoclimatico.dadoclimatico.model.IPainel;
 import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import java.time.LocalDate;
 import java.util.ArrayList;

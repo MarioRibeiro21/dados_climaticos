@@ -7,6 +7,7 @@ package com.mycompany.dadoclimatico.dadoclimatico.view;
 import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import com.mycompany.dadoclimatico.dadoclimatico.utils.DataUtil;
 import javax.swing.JButton;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -76,7 +77,7 @@ public class ClimaFrame extends javax.swing.JFrame {
         frmConfiguracao = new javax.swing.JInternalFrame();
         jLabel12 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jButton1Salvar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -168,7 +169,7 @@ public class ClimaFrame extends javax.swing.JFrame {
                     .addComponent(txtInclude_Pressão, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnIncluir)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         frmDadosMedios.setTitle("Dados Médios");
@@ -327,37 +328,13 @@ public class ClimaFrame extends javax.swing.JFrame {
         tblRegistros.setAutoCreateRowSorter(true);
         tblRegistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Data", "Temperatura", "Umidade", "Pressão"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(tblRegistros);
-        if (tblRegistros.getColumnModel().getColumnCount() > 0) {
-            tblRegistros.getColumnModel().getColumn(0).setHeaderValue("Data");
-            tblRegistros.getColumnModel().getColumn(1).setHeaderValue("Temperatura");
-            tblRegistros.getColumnModel().getColumn(2).setHeaderValue("Umidade");
-            tblRegistros.getColumnModel().getColumn(3).setHeaderValue("Pressão");
-        }
 
         btnRemove.setText("Remover");
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
@@ -424,11 +401,16 @@ public class ClimaFrame extends javax.swing.JFrame {
         jLabel12.setText("Log:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "JSON", "XML" }));
-
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jButton1Salvar.setText("Salvar");
+        jButton1Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1SalvarActionPerformed(evt);
             }
         });
 
@@ -439,7 +421,7 @@ public class ClimaFrame extends javax.swing.JFrame {
             .addGroup(frmConfiguracaoLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(frmConfiguracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(jButton1Salvar)
                     .addGroup(frmConfiguracaoLayout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -454,7 +436,7 @@ public class ClimaFrame extends javax.swing.JFrame {
                     .addComponent(jLabel12)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jButton1Salvar)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -540,9 +522,9 @@ public class ClimaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRemoveActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1SalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1SalvarActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         if(frmConfiguracao.isVisible())
@@ -559,6 +541,10 @@ public class ClimaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtInclude_UmidadeActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     
     public JButton getBtnIncluir(){
         return this.btnIncluir;
@@ -574,6 +560,14 @@ public class ClimaFrame extends javax.swing.JFrame {
 
     public JLabel getLblData() {
         return lblData;
+    }
+
+    public JInternalFrame getFrmGrafico() {
+        return frmGrafico;
+    }
+
+    public void setFrmGrafico(JInternalFrame frmGrafico) {
+        this.frmGrafico = frmGrafico;
     }
 
     public void setLblData(JLabel lblData) {
@@ -752,7 +746,7 @@ public class ClimaFrame extends javax.swing.JFrame {
     private javax.swing.JInternalFrame frmGrafico;
     private javax.swing.JInternalFrame frmRegistros;
     private javax.swing.JInternalFrame frmUltimaAtt;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton1Salvar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
