@@ -43,7 +43,7 @@ public class FramePresenter {
 
     private void incluirDados() {
 
-        estacao.atualizarMedicoes(frame.getDado().getTemperatura(), frame.getDado().getUmidade(), frame.getDado().getPressao(), frame.getDado().getData());
+        estacao.inserirMedicoes(frame.getDado().getTemperatura(), frame.getDado().getUmidade(), frame.getDado().getPressao(), frame.getDado().getData());
         System.out.println("entrou no incluir");
 
         mapValorAtual(frame.getDado());

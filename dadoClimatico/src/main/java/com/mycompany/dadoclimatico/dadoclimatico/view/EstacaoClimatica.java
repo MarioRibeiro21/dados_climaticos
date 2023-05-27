@@ -34,14 +34,25 @@ public class EstacaoClimatica {
         paineis.remove(painel);
     }
 
-    public void atualizarMedicoes(Float temperatura, Float umidade, Float pressao, LocalDate data) {
+    public void inserirMedicoes(Float temperatura, Float umidade, Float pressao, LocalDate data) {
         var dado = new DadoClima(temperatura, umidade, pressao, data);
-        notificarPaineis(dado);
+        notificarInsercaoPaineis(dado);
     }
 
-    private void notificarPaineis(DadoClima dadoClima) {
+    private void notificarInsercaoPaineis(DadoClima dadoClima) {
         for (IPainel painel : paineis) {
-            painel.atualizar(dadoClima);
+            painel.inserir(dadoClima);
+        }
+    }
+    
+     public void removerMedicoes(Float temperatura, Float umidade, Float pressao, LocalDate data) {
+        var dado = new DadoClima(temperatura, umidade, pressao, data);
+        notificarInsercaoPaineis(dado);
+    }
+    
+    private void notificarRemocaoPaineis(DadoClima dadoClima) {
+        for (IPainel painel : paineis) {
+            painel.remover(dadoClima);
         }
     }
 

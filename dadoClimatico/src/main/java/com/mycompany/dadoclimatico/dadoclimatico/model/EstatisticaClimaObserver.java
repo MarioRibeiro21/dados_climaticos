@@ -28,12 +28,18 @@ public class EstatisticaClimaObserver implements IPainel {
     }
 
     @Override
-    public void atualizar(DadoClima dadoClima) {
+    public void inserir(DadoClima dadoClima) {
         if (estatistica.getDadosClima() == null) {
             dadosClima = new ArrayList();
         }
         estatistica.getDadosClima().add(dadoClima);
         calcularMedia();
+    }
+    
+    @Override
+    public void remover(DadoClima dadoClima) {
+     estatistica.getDadosClima().remove(dadoClima);
+     calcularMedia();
     }
 
     private void calcularMedia() {
@@ -85,5 +91,6 @@ public class EstatisticaClimaObserver implements IPainel {
     public List<DadoClima> getDadosClima() {
         return dadosClima;
     }
+
 
 }

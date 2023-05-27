@@ -12,7 +12,9 @@ import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
  */
 public interface IPainel {
     
-    void atualizar(DadoClima dadoClima);
+    void inserir(DadoClima dadoClima);
+    
+    void remover(DadoClima dadoClima);
     
 }
 

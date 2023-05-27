@@ -47,11 +47,18 @@ public class MaximasMinimasObserver implements IPainel {
     }
 
     @Override
-    public void atualizar(DadoClima dadoClima) {
+    public void inserir(DadoClima dadoClima) {
         dadosClima.add(dadoClima);
         calcularMaximasMinimas();
     }
 
+    
+    @Override
+    public void remover(DadoClima dadoClima) {
+      dadosClima.remove(dadoClima);
+      calcularMaximasMinimas();
+    }
+    
     private void calcularMaximasMinimas() {
 
         for (DadoClima dado : dadosClima) {
@@ -137,5 +144,6 @@ public class MaximasMinimasObserver implements IPainel {
     public static void setMaximaMinima(MaximasMinimasObserver maximaMinima) {
         MaximasMinimasObserver.maximaMinima = maximaMinima;
     }
+
 
 }
