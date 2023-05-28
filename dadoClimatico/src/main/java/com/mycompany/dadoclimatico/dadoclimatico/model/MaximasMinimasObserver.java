@@ -55,7 +55,15 @@ public class MaximasMinimasObserver implements IPainel {
     
     @Override
     public void remover(DadoClima dadoClima) {
-      dadosClima.remove(dadoClima);
+       int i=0;
+      for (DadoClima dado : dadosClima) { 
+            if(dado.getTemperatura()==dadoClima.getTemperatura() && dado.getPressao() ==dadoClima.getPressao() && dado.getUmidade()==dadoClima.getUmidade() && dado.getData().compareTo(dadoClima.getData())== 0){
+                 dadosClima.remove(i);
+                 break;
+            }
+           i++;
+       }
+     
       calcularMaximasMinimas();
     }
     

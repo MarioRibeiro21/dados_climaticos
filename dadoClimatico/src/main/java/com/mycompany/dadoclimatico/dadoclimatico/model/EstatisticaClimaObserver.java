@@ -4,7 +4,6 @@
  */
 package com.mycompany.dadoclimatico.dadoclimatico.model;
 
-import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,14 @@ public class EstatisticaClimaObserver implements IPainel {
     
     @Override
     public void remover(DadoClima dadoClima) {
-     estatistica.getDadosClima().remove(dadoClima);
+     int i=0;
+      for (DadoClima dado : estatistica.getDadosClima()) { 
+            if(dado.getTemperatura()==dadoClima.getTemperatura() && dado.getPressao() ==dadoClima.getPressao() && dado.getUmidade()==dadoClima.getUmidade() && dado.getData().compareTo(dadoClima.getData())== 0){
+                 estatistica.getDadosClima().remove(i);
+                 break;
+            }
+           i++;
+       }
      calcularMedia();
     }
 

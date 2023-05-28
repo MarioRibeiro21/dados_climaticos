@@ -40,13 +40,21 @@ public class FramePresenter {
                 incluirDados();
             }
         });
-        
+
         frame.getBtnRemove().addActionListener((e) -> {
+
             removerDados();
+
+            mapValorAtual();
+
+            mapMedia();
+
+            removerTabela();
+
         });
     }
-    
-    private void removerDados(){
+
+    private void removerDados() {
         JTable tabela = frame.getTblRegistros();
         LocalDate data = DataUtil.stringToData(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         Float temperatura = Float.parseFloat(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
@@ -59,23 +67,30 @@ public class FramePresenter {
 
         estacao.inserirMedicoes(frame.getDado().getTemperatura(), frame.getDado().getUmidade(), frame.getDado().getPressao(), frame.getDado().getData());
 
-        mapValorAtual(frame.getDado());
+        mapValorAtual();
 
         mapMedia();
 
         AdicionarTabela();
-        
+
         plotGrafico();
 
-       // exportarLog(estatistica.getDadosClima());
-
+        // exportarLog(estatistica.getDadosClima());
     }
 
-    private void mapValorAtual(DadoClima dado) {
-        frame.getLblUltimo_Temperatura().setText(Float.toString(frame.getDado().getTemperatura()));
-        frame.getLblUltimo_Umidade().setText(Float.toString(frame.getDado().getUmidade()));
-        frame.getLblUltimo_Pressao().setText(Float.toString(frame.getDado().getPressao()));
-        frame.getLblUltimo_Data().setText(DataUtil.dataToString(frame.getDado().getData()));
+    private void mapValorAtual() {
+        var dadosClima = estatistica.getDadosClima();
+        if (dadosClima.size() == 0) {
+            frame.getLblUltimo_Temperatura().setText("sem valor");
+            frame.getLblUltimo_Umidade().setText("sem valor");
+            frame.getLblUltimo_Pressao().setText("sem valor");
+            frame.getLblUltimo_Data().setText("sem valor");
+        } else {
+            frame.getLblUltimo_Temperatura().setText(Float.toString(dadosClima.get(dadosClima.size() - 1).getTemperatura()));
+            frame.getLblUltimo_Umidade().setText(Float.toString(dadosClima.get(dadosClima.size() - 1).getUmidade()));
+            frame.getLblUltimo_Pressao().setText(Float.toString(dadosClima.get(dadosClima.size() - 1).getPressao()));
+            frame.getLblUltimo_Data().setText(DataUtil.dataToString(dadosClima.get(dadosClima.size() - 1).getData()));
+        }
     }
 
     private void mapMedia() {
@@ -94,6 +109,15 @@ public class FramePresenter {
 
     }
 
+    private void removerTabela() {
+        JTable tabela = frame.getTblRegistros();
+        if (tabela.getModel().getRowCount() == 1) {
+            ((DefaultTableModel) tabela.getModel()).removeRow(0);
+            return;
+        }
+        ((DefaultTableModel) tabela.getModel()).removeRow(tabela.getSelectedRow());
+    }
+
     private void exportarLog(List<DadoClima> dado) {
         switch (1) {
             case 1 -> {
@@ -108,18 +132,18 @@ public class FramePresenter {
             }
         }
     }
-    
-    private void plotGrafico(){
-        
-       DefaultCategoryDataset barra = new DefaultCategoryDataset();
-       barra.setValue(maximaMinima.getMaximaTemperatura(), "Temperatura", "");
-       barra.setValue(maximaMinima.getMinimaTemperatura(), "Temperatura", "");
-       barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
-       barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
-       barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
-       barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
-       
-       JFreeChart grafico = ChartFactory.createBarChart("Dados Médios", "Dados climáticos", "temperatura", barra, PlotOrientation.VERTICAL,true,true,false);
-       ChartPanel painel = new ChartPanel(grafico);
+
+    private void plotGrafico() {
+
+        DefaultCategoryDataset barra = new DefaultCategoryDataset();
+        barra.setValue(maximaMinima.getMaximaTemperatura(), "Temperatura", "");
+        barra.setValue(maximaMinima.getMinimaTemperatura(), "Temperatura", "");
+        barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
+        barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
+        barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
+        barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
+
+        JFreeChart grafico = ChartFactory.createBarChart("Dados Médios", "Dados climáticos", "temperatura", barra, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel painel = new ChartPanel(grafico);
     }
 }
