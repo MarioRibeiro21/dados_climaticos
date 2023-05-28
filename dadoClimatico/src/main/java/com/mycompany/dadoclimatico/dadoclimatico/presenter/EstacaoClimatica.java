@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.dadoclimatico.dadoclimatico.view;
+package com.mycompany.dadoclimatico.dadoclimatico.presenter;
 
 import com.mycompany.dadoclimatico.dadoclimatico.model.MaximasMinimasObserver;
 import com.mycompany.dadoclimatico.dadoclimatico.model.EstatisticaClimaObserver;

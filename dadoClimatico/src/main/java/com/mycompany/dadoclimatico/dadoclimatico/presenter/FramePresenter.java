@@ -4,7 +4,6 @@ import com.mycompany.dadoclimatico.dadoclimatico.model.AdapterExportJson;
 import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import com.mycompany.dadoclimatico.dadoclimatico.utils.DataUtil;
 import com.mycompany.dadoclimatico.dadoclimatico.view.ClimaFrame;
-import com.mycompany.dadoclimatico.dadoclimatico.view.EstacaoClimatica;
 import com.mycompany.dadoclimatico.dadoclimatico.model.EstatisticaClimaObserver;
 import com.mycompany.dadoclimatico.dadoclimatico.model.IAdapterExport;
 import com.mycompany.dadoclimatico.dadoclimatico.model.MaximasMinimasObserver;
@@ -75,7 +74,7 @@ public class FramePresenter {
 
         plotGrafico();
 
-        // exportarLog(estatistica.getDadosClima());
+         exportarLog(estatistica.getDadosClima());
     }
 
     private void mapValorAtual() {
