@@ -145,16 +145,7 @@ public class FramePresenter {
         dataset.addValue(maximaMinima.getMinimaPressao(), "Pressão mínima", LocalDate.now());
 
         // Criação do gráfico de barras
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Gráfico de Barras", // Título do gráfico
-                "Data", // Rótulo do eixo x
-                "Valor", // Rótulo do eixo y
-                dataset, // Conjunto de dados
-                PlotOrientation.VERTICAL, // Orientação do gráfico
-                true, // Exibir legenda
-                true, // Exibir dicas de valores
-                false // Não exibir URLs
-        );
+        JFreeChart chart = ChartFactory.createBarChart("Dados Médios","Data", "Valor",dataset,PlotOrientation.VERTICAL,true,true,false );
 
         // Criação do ChartPanel e configurações
         ChartPanel chartPanel = new ChartPanel(chart);
