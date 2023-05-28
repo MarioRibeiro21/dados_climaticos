@@ -9,8 +9,10 @@ import com.mycompany.dadoclimatico.dadoclimatico.model.EstatisticaClimaObserver;
 import com.mycompany.dadoclimatico.dadoclimatico.model.IAdapterExport;
 import com.mycompany.dadoclimatico.dadoclimatico.model.MaximasMinimasObserver;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -34,17 +36,28 @@ public class FramePresenter {
     public FramePresenter() {
 
         frame.getBtnIncluir().addActionListener((e) -> {
-            System.out.println("cheguei");
             if (frame.getTxtInclude_Data() != null && frame.getTxtInclude_Temperatura() != null && frame.getTxtInclude_Umidade() != null && frame.getTxtInclude_Pressao() != null) {
                 incluirDados();
             }
         });
+        
+        frame.getBtnRemove().addActionListener((e) -> {
+            removerDados();
+        });
+    }
+    
+    private void removerDados(){
+        JTable tabela = frame.getTblRegistros();
+        LocalDate data = DataUtil.stringToData(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        Float temperatura = Float.parseFloat(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+        Float umidade = Float.parseFloat(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+        Float pressao = Float.parseFloat(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+        estacao.removerMedicoes(temperatura, umidade, pressao, data);
     }
 
     private void incluirDados() {
 
         estacao.inserirMedicoes(frame.getDado().getTemperatura(), frame.getDado().getUmidade(), frame.getDado().getPressao(), frame.getDado().getData());
-        System.out.println("entrou no incluir");
 
         mapValorAtual(frame.getDado());
 
@@ -77,7 +90,7 @@ public class FramePresenter {
 
         DadoClima d = frame.getDado();
 
-        tabela.addRow(new Object[]{d.getData(), d.getTemperatura(), d.getUmidade(), d.getPressao()});
+        tabela.addRow(new Object[]{DataUtil.dataToString(d.getData()), d.getTemperatura(), d.getUmidade(), d.getPressao()});
 
     }
 
@@ -97,7 +110,7 @@ public class FramePresenter {
     }
     
     private void plotGrafico(){
-        System.out.println("auqi" + maximaMinima.getMaximaTemperatura()+ maximaMinima.getMinimaTemperatura());
+        
        DefaultCategoryDataset barra = new DefaultCategoryDataset();
        barra.setValue(maximaMinima.getMaximaTemperatura(), "Temperatura", "");
        barra.setValue(maximaMinima.getMinimaTemperatura(), "Temperatura", "");

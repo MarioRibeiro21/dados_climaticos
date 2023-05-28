@@ -47,7 +47,7 @@ public class EstacaoClimatica {
     
      public void removerMedicoes(Float temperatura, Float umidade, Float pressao, LocalDate data) {
         var dado = new DadoClima(temperatura, umidade, pressao, data);
-        notificarInsercaoPaineis(dado);
+        notificarRemocaoPaineis(dado);
     }
     
     private void notificarRemocaoPaineis(DadoClima dadoClima) {
