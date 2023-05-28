@@ -134,16 +134,33 @@ public class FramePresenter {
     }
 
     private void plotGrafico() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        DefaultCategoryDataset barra = new DefaultCategoryDataset();
-        barra.setValue(maximaMinima.getMaximaTemperatura(), "Temperatura", "");
-        barra.setValue(maximaMinima.getMinimaTemperatura(), "Temperatura", "");
-        barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
-        barra.setValue(maximaMinima.getMinimaPressao(), "Pressão", "");
-        barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
-        barra.setValue(maximaMinima.getMinimaUmidade(), "Umidade", "");
+        // Adicionar os dados do estacaoClimatica aos datasets
+        dataset.addValue(maximaMinima.getMaximaTemperatura(), "Temperatura máxima", LocalDate.now());
+        dataset.addValue(maximaMinima.getMinimaTemperatura(), "Temperatura mínima", LocalDate.now());
+        dataset.addValue(maximaMinima.getMaximaUmidade(), "Umidade máxima", LocalDate.now());
+        dataset.addValue(maximaMinima.getMinimaUmidade(), "Umidade mínima", LocalDate.now());
+        dataset.addValue(maximaMinima.getMaximaPressao(), "Pressão máxima", LocalDate.now());
+        dataset.addValue(maximaMinima.getMinimaPressao(), "Pressão mínima", LocalDate.now());
 
-        JFreeChart grafico = ChartFactory.createBarChart("Dados Médios", "Dados climáticos", "temperatura", barra, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel painel = new ChartPanel(grafico);
+        // Criação do gráfico de barras
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Gráfico de Barras", // Título do gráfico
+                "Data", // Rótulo do eixo x
+                "Valor", // Rótulo do eixo y
+                dataset, // Conjunto de dados
+                PlotOrientation.VERTICAL, // Orientação do gráfico
+                true, // Exibir legenda
+                true, // Exibir dicas de valores
+                false // Não exibir URLs
+        );
+
+        // Criação do ChartPanel e configurações
+        ChartPanel chartPanel = new ChartPanel(chart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(700, 300));
+
+        frame.getFrmGrafico().setContentPane(chartPanel);
+
     }
 }

@@ -68,7 +68,14 @@ public class MaximasMinimasObserver implements IPainel {
     }
     
     private void calcularMaximasMinimas() {
-
+        
+        this.maximaTemperatura = dadosClima.get(0).getTemperatura();
+        this.minimaTemperatura = dadosClima.get(0).getTemperatura();
+        this.maximaUmidade = dadosClima.get(0).getUmidade();
+        this.minimaUmidade = dadosClima.get(0).getUmidade();
+        this.maximaPressao = dadosClima.get(0).getPressao();
+        this.minimaPressao = dadosClima.get(0).getPressao();
+                
         for (DadoClima dado : dadosClima) {
             if (dado.getTemperatura() > maximaTemperatura) {
                 this.maximaTemperatura = dado.getTemperatura();
@@ -82,8 +89,8 @@ public class MaximasMinimasObserver implements IPainel {
             if (dado.getPressao() < minimaPressao) {
                 this.minimaPressao = dado.getPressao();
             }
-             if (dado.getPressao()> maximaUmidade) {
-                this.maximaUmidade = dado.getPressao();
+             if (dado.getUmidade()> maximaUmidade) {
+                this.maximaUmidade = dado.getUmidade();
             }
             if (dado.getUmidade() < minimaUmidade) {
                 this.minimaUmidade = dado.getUmidade();
