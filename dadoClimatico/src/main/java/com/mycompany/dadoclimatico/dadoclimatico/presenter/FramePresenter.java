@@ -49,6 +49,10 @@ public class FramePresenter {
             mapMedia();
 
             removerTabela();
+            
+            plotGrafico();
+            
+            exportarLog(estatistica.getDadosClima());
 
         });
     }
@@ -133,6 +137,11 @@ public class FramePresenter {
     }
 
     private void plotGrafico() {
+        
+        if(estatistica.getDadosClima().isEmpty()){
+            frame.getFrmGrafico().setVisible(false);
+            return;
+        }
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         // Adicionar os dados do estacaoClimatica aos datasets

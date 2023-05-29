@@ -69,12 +69,17 @@ public class MaximasMinimasObserver implements IPainel {
     
     private void calcularMaximasMinimas() {
         
+        if(dadosClima.isEmpty()){
+            return;
+        }
         this.maximaTemperatura = dadosClima.get(0).getTemperatura();
         this.minimaTemperatura = dadosClima.get(0).getTemperatura();
         this.maximaUmidade = dadosClima.get(0).getUmidade();
         this.minimaUmidade = dadosClima.get(0).getUmidade();
         this.maximaPressao = dadosClima.get(0).getPressao();
         this.minimaPressao = dadosClima.get(0).getPressao();
+        
+ 
                 
         for (DadoClima dado : dadosClima) {
             if (dado.getTemperatura() > maximaTemperatura) {
