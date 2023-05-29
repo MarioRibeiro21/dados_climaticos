@@ -7,6 +7,7 @@ package com.mycompany.dadoclimatico.dadoclimatico.view;
 import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import com.mycompany.dadoclimatico.dadoclimatico.utils.DataUtil;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -523,6 +524,14 @@ public class ClimaFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1SalvarActionPerformed
 
+    public JButton getjButton1Salvar() {
+        return jButton1Salvar;
+    }
+
+    public void setjButton1Salvar(JButton jButton1Salvar) {
+        this.jButton1Salvar = jButton1Salvar;
+    }
+
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         if(frmConfiguracao.isVisible())
             frmConfiguracao.setVisible(false);
@@ -541,6 +550,14 @@ public class ClimaFrame extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBox1 = jComboBox1;
+    }
 
     
     public JButton getBtnIncluir(){

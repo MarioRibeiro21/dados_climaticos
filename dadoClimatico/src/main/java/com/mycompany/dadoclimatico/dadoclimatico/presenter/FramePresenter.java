@@ -1,6 +1,7 @@
 package com.mycompany.dadoclimatico.dadoclimatico.presenter;
 
 import com.mycompany.dadoclimatico.dadoclimatico.model.AdapterExportJson;
+import com.mycompany.dadoclimatico.dadoclimatico.model.AdapterExportXml;
 import com.mycompany.dadoclimatico.dadoclimatico.model.DadoClima;
 import com.mycompany.dadoclimatico.dadoclimatico.utils.DataUtil;
 import com.mycompany.dadoclimatico.dadoclimatico.view.ClimaFrame;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
@@ -29,8 +32,7 @@ public class FramePresenter {
     private EstatisticaClimaObserver estatistica = EstatisticaClimaObserver.getEstatisticaClimaObserver();
     private MaximasMinimasObserver maximaMinima = MaximasMinimasObserver.getMaximaMinimaClimaObserver();
     private IAdapterExport adapter;
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private String tipoArquivo = "JSON";
 
     public FramePresenter() {
 
@@ -49,11 +51,16 @@ public class FramePresenter {
             mapMedia();
 
             removerTabela();
-            
+
             plotGrafico();
-            
+
             exportarLog(estatistica.getDadosClima());
 
+        });
+
+        frame.getjButton1Salvar().addActionListener((e) -> {
+            tipoArquivo = frame.getjComboBox1().getSelectedItem().toString();
+            exportarLog(estatistica.getDadosClima());
         });
     }
 
@@ -78,7 +85,7 @@ public class FramePresenter {
 
         plotGrafico();
 
-         exportarLog(estatistica.getDadosClima());
+        exportarLog(estatistica.getDadosClima());
     }
 
     private void mapValorAtual() {
@@ -122,23 +129,28 @@ public class FramePresenter {
     }
 
     private void exportarLog(List<DadoClima> dado) {
-        switch (1) {
-            case 1 -> {
+        switch (tipoArquivo) {
+            case "JSON" -> {
                 try {
                     adapter = new AdapterExportJson();
                     adapter.escrever(dado);
                 } catch (IOException e) {
                 }
             }
-            case 2 -> {
-
+            case "XML" -> {
+                adapter = new AdapterExportXml();
+                try {
+                    adapter.escrever(dado);
+                } catch (IOException ex) {
+                    Logger.getLogger(FramePresenter.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
 
     private void plotGrafico() {
-        
-        if(estatistica.getDadosClima().isEmpty()){
+
+        if (estatistica.getDadosClima().isEmpty()) {
             frame.getFrmGrafico().setVisible(false);
             return;
         }
@@ -153,7 +165,7 @@ public class FramePresenter {
         dataset.addValue(maximaMinima.getMinimaPressao(), "Pressão mínima", LocalDate.now());
 
         // Criação do gráfico de barras
-        JFreeChart chart = ChartFactory.createBarChart("Dados Médios","Data", "Valor",dataset,PlotOrientation.VERTICAL,true,true,false );
+        JFreeChart chart = ChartFactory.createBarChart("Dados Médios", "Data", "Valor", dataset, PlotOrientation.VERTICAL, true, true, false);
 
         // Criação do ChartPanel e configurações
         ChartPanel chartPanel = new ChartPanel(chart);
