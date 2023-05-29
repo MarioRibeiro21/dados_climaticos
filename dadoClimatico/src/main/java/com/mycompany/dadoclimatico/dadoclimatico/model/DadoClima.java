@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Mario
+ * @author Mario e Álvaro
  */
 public class DadoClima {
     
@@ -23,6 +23,10 @@ public class DadoClima {
        this.pressao = pressao;
        this.data = data;
    }
+
+    public DadoClima() {
+    }
+   
 
     public float getTemperatura() {
         return temperatura;
